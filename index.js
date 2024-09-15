@@ -7,8 +7,14 @@ mongoose.connect("mongodb+srv://ysonu1071:813208@cluster0.9zlg4.mongodb.net/test
     .then(() => console.log("DB connected!"))
     .catch((err) => console.log(err.message))
 
+const corsOptions = {
+    origin: '*',
+    credentials: true,            //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
+}
+
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use(function (req, res, next) {
