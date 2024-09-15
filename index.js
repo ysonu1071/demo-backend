@@ -32,9 +32,14 @@ app.post("/user", async(req, res)=>{
 })
 
 app.get("/", async(req, res)=>{
+    try{
     userInfo = await UserModel.find();
     console.log(userInfo,' this is userinfo')
     return res.status(200).json({message:"response from server", data: userInfo})
+    }catch(err){
+        console.log(err, 'this is errror')
+        res.status(200).json({message:"some error"})
+    }
 })
 
 
